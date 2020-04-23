@@ -1,0 +1,61 @@
+[user]
+	name = viyoriya
+	email = viyoriya@gmail.com
+[core]
+	editor = subl -n -w
+[color]
+	ui = auto
+	branch = auto
+	status = auto
+	diff = auto
+[alias]
+  aa = add --all .
+  aam = add --update
+  b = branch
+  ci = commit -v -q
+  co = checkout
+  clist = config --global --list
+  di = diff --word-diff
+  do = diff --word-diff master..origin/master
+  dc = diff --word-diff --cached
+  fe = fetch -v
+  ff = merge --ff-only
+  l  = log --graph --abbrev-commit --date=relative
+  ll = log --graph --date=relative --name-status --pretty
+  llo = log --graph --abbrev-commit --date=relative --name-status master..origin/master
+  lp = log --graph --abbrev-commit --date=relative -p
+  lpo = log --graph --abbrev-commit --date=relative -p master..origin/master
+  lo = log --graph --abbrev-commit --date=relative master..origin/master
+  # just list files
+  ls = ls-files
+  # list modified
+  lm = ls-files --modified
+  pu = "!echo Use \"$(tput setaf 6)git fetch$(tput sgr0)\" instead "
+  # commits that are about to leave/enter
+  out = log --graph --abbrev-commit --date=relative origin/master..master
+  in  = "!git lo"
+  # inspecting log with select for fuzzy matching
+  ss = "!f() { git log --abbrev-commit --format=oneline ${*} | selecta | egrep -oE  '[^[:space:]]{7}' | head -n 1 | xargs git show; }; f"
+  # quick find authors and their commit numbers
+  sl = shortlog -sn
+  # status that also checks for trailing white spaces
+  st = "!git white; git status -sb"
+  sub = submodule
+  # check for whitespace violations
+  white = "!git diff --check; git diff --cached --check"
+  # top most changed files in a repo
+  chfq = "!git log --name-status | grep -E '^M[[:blank:]]' | cut -d' ' -f 2  | sort | uniq -c | sort -rn | head -20"
+  ctags = "!.git/hooks/ctags"
+  quickserve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+	share = "!echo \"git://$(ipconfig getifaddr en0)/\" | pbcopy; echo \"Sharing $(pbpaste) \" ;  git quickserve "
+[merge]
+  tool = meld
+  defaultToUpstream = true
+[format]
+  pretty=format:%C(yellow)%h%Creset -%C(red)%d%Creset %s %Cgreen(%ar) %C(bold blue)<%an>%Creset
+[push]
+  default = simple
+[credential]
+	helper = store
+[hub]
+  protocol = https

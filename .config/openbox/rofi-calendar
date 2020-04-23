@@ -1,0 +1,31 @@
+#! /bin/sh
+
+DATEFTM="${DATEFTM:-+<span color='#9fb4cd'> %d/%m </span><span color='#0073ff' weight='bold'>%H:%M</span>}"
+SHORTFMT="${SHORTFMT:-+%d.%m.%Y}"
+LABEL="${LABEL:-}"
+blockdate=$(date "$DATEFTM")
+shortblockdate=$(date "$SHORTFMT")
+
+year=$(date '+%Y')
+month=$(date '+%m')
+date=$(date '+%A, %d. %B');
+export TERM=xterm
+cal --color=always $month $year \
+    | sed 's/\x1b\[[7;]*m/\<b\>\<u\>/g' \
+    | sed 's/\x1b\[[27;]*m/\<\/u\>\<\/b\>/g' \
+    | tail -n +2 \
+    | rofi \
+        -dmenu \
+        -markup-rows \
+        -no-fullscreen \
+        -font 'Monospace Regular 9' \
+        -hide-scrollbar \
+        -lines 7 \
+        -yoffset -295 -xoffset 540 \
+        -theme '~/.config/rofi/themes/viyoriya.rasi' \
+        -eh 1 \
+        -width -25 \
+        -no-custom \
+        -p "" > /dev/null 
+echo "$LABEL$blockdate"
+echo "$LABEL$shortblockdate"

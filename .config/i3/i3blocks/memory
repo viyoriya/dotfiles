@@ -1,0 +1,2 @@
+TYPE="${BLOCK_INSTANCE:-memory}"
+free -m | awk '/Mem/ {printf "%d/%d MB\n", $3, $2 }'

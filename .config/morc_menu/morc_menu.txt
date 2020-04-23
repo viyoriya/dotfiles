@@ -1,0 +1,143 @@
+Accessibility---Onboard settings---onboard-settings
+Accessibility---Onboard---onboard
+Accessories---Archive manager---file-roller
+Accessories---Calculator---gnome-calculator
+Accessories---Clipit---clipit
+Accessories---Compton---compton
+Accessories---Disks---gnome-disks
+Accessories---Files---nautilus --new-window
+Accessories---Help---yelp
+Accessories---Onboard---onboard
+Accessories---Passwords and keys---seahorse
+Accessories---Screenshot---gnome-screenshot --interactive
+Accessories---Text editor---gedit
+Application---Clipit---clipit
+Application---Thunderbird---thunderbird
+Audio---Rhythmbox---rhythmbox
+Development---Meld---meld
+Development---Sublime text---/opt/sublime_text/sublime_text
+GNOME---About---gnome-control-center info-overview
+GNOME---Advanced network configuration---nm-connection-editor
+GNOME---Applications---gnome-control-center applications
+GNOME---Archive manager---file-roller
+GNOME---Background---gnome-control-center background
+GNOME---Bluetooth---gnome-control-center bluetooth
+GNOME---Budgie desktop settings---budgie-desktop-settings
+GNOME---Calculator---gnome-calculator
+GNOME---Calendar---gnome-calendar
+GNOME---Clipit---clipit
+GNOME---Color picker---gcolor3
+GNOME---Color profile viewer---gcm-viewer
+GNOME---Color---gnome-control-center color
+GNOME---Date & time---gnome-control-center datetime
+GNOME---Dconf editor---dconf-editor
+GNOME---Disk usage analyzer---baobab
+GNOME---Disks---gnome-disks
+GNOME---Displays---gnome-control-center display
+GNOME---Document viewer---evince
+GNOME---Evolution---evolution
+GNOME---Files---nautilus --new-window
+GNOME---Firewall configuration---gufw
+GNOME---Gnome mpv---gnome-mpv
+GNOME---Gparted---/usr/bin/gparted
+GNOME---Help---yelp
+GNOME---Image viewer---eog
+GNOME---Keyboard---gnome-control-center keyboard
+GNOME---Mouse & touchpad---gnome-control-center mouse
+GNOME---Network---gnome-control-center network
+GNOME---Notifications---gnome-control-center notifications
+GNOME---Online accounts---gnome-control-center online-accounts
+GNOME---Passwords and keys---seahorse
+GNOME---Photos---gnome-photos
+GNOME---Power---gnome-control-center power
+GNOME---Printers---gnome-control-center printers
+GNOME---Privacy---gnome-control-center privacy
+GNOME---Region & language---gnome-control-center region
+GNOME---Rhythmbox---rhythmbox
+GNOME---Screenshot---gnome-screenshot --interactive
+GNOME---Search---gnome-control-center search
+GNOME---Settings---gnome-control-center
+GNOME---Sharing---gnome-control-center sharing
+GNOME---Sound---gnome-control-center sound
+GNOME---System monitor---gnome-system-monitor
+GNOME---Terminal---gnome-terminal
+GNOME---Text editor---gedit
+GNOME---Universal access---gnome-control-center universal-access
+GNOME---Users---gnome-control-center user-accounts
+GNOME---Wacom tablet---gnome-control-center wacom
+GNOME---Wi-fi---gnome-control-center wifi
+Graphics---Color picker---gcolor3
+Graphics---Document viewer---evince
+Graphics---Gnu image manipulation program---gimp-2.10
+Graphics---Image viewer---eog
+Graphics---Libreoffice draw---libreoffice --draw
+Graphics---Photos---gnome-photos
+Internet---Firefox---firefox
+Internet---Google chrome---/usr/bin/google-chrome-stable
+Internet---Hexchat---hexchat --existing
+Internet---Thunderbird---thunderbird
+Internet---Transmission---transmission-gtk
+Multimedia---Gnome mpv---gnome-mpv
+Multimedia---Rhythmbox---rhythmbox
+Office---Calendar---gnome-calendar
+Office---Document viewer---evince
+Office---Evolution---evolution
+Office---Libreoffice calc---libreoffice --calc
+Office---Libreoffice draw---libreoffice --draw
+Office---Libreoffice impress---libreoffice --impress
+Office---Libreoffice writer---libreoffice --writer
+Office---Libreoffice---libreoffice
+Settings---About---gnome-control-center info-overview
+Settings---Advanced network configuration---nm-connection-editor
+Settings---Applications---gnome-control-center applications
+Settings---Background---gnome-control-center background
+Settings---Bluetooth---gnome-control-center bluetooth
+Settings---Color---gnome-control-center color
+Settings---Customize look and feel---lxappearance
+Settings---Date & time---gnome-control-center datetime
+Settings---Displays---gnome-control-center display
+Settings---Firewall configuration---gufw
+Settings---Grub customizer---grub-customizer
+Settings---Hardware drivers---/usr/bin/doflicky-ui
+Settings---Ibus preferences---ibus-setup
+Settings---Keyboard---gnome-control-center keyboard
+Settings---Mouse & touchpad---gnome-control-center mouse
+Settings---Network---gnome-control-center network
+Settings---Notifications---gnome-control-center notifications
+Settings---Onboard settings---onboard-settings
+Settings---Online accounts---gnome-control-center online-accounts
+Settings---Power---gnome-control-center power
+Settings---Print settings---system-config-printer
+Settings---Printers---gnome-control-center printers
+Settings---Privacy---gnome-control-center privacy
+Settings---Region & language---gnome-control-center region
+Settings---Search---gnome-control-center search
+Settings---Sharing---gnome-control-center sharing
+Settings---Software center---/usr/bin/solus-sc
+Settings---Sound---gnome-control-center sound
+Settings---Universal access---gnome-control-center universal-access
+Settings---Users---gnome-control-center user-accounts
+Settings---Wacom tablet---gnome-control-center wacom
+Settings---Wi-fi---gnome-control-center wifi
+System---Budgie desktop settings---budgie-desktop-settings
+System---Color profile viewer---gcm-viewer
+System---Dconf editor---dconf-editor
+System---Disk usage analyzer---baobab
+System---Gparted---/usr/bin/gparted
+System---Grub customizer---grub-customizer
+System---Htop---terminal -e htop
+System---Print settings---system-config-printer
+System---Ranger---terminal -e ranger
+System---Settings---gnome-control-center
+System---Software center---/usr/bin/solus-sc
+System---System monitor---gnome-system-monitor
+System---Terminal---gnome-terminal
+System---Tilix---tilix
+Video---Gnome mpv---gnome-mpv
+X-GNOME-SystemSettings---Firewall configuration---gufw
+X-GNOME-Utilities---Advanced network configuration---nm-connection-editor
+X-GNOME-Utilities---Archive manager---file-roller
+X-GNOME-Utilities---Disk usage analyzer---baobab
+X-GNOME-Utilities---Disks---gnome-disks
+X-GNOME-Utilities---Screenshot---gnome-screenshot --interactive
+X-GNOME-Utilities---Tilix---tilix
