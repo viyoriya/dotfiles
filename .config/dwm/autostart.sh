@@ -1,8 +1,10 @@
 #! /bin/bash
 
-wmname LG3D &
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+#wmname LG3D &
 compton -e 0.92 -o 0.92 -b &
-feh --bg-scale ~/Pictures/wallpapers/u_muhahah_the_sixer_3.jpg &
+feh --bg-scale ~/Pictures/Wallpapers/203564_grey.jpg &
 dunst -conf ~/.config/dunst/dunstrc &
 #notify-send -u low "Scrot" "Screenshot done !!!" -i ~/.local/share/icons/Papirus-Dark/32x32/devices/camera.svg
 notify-send -u low "Solus dwm" "All right" -i ~/.dwm/dwm_logo.png
@@ -22,7 +24,7 @@ while true; do
 	UPTIME=$(uptime | awk -F, '{print $1}' | awk '{$1=$2=""; print substr($0,3)}')
 	DATE_TIME=$(date +" %d/%m  %H:%M")
 	xsetroot -name "  $VOLUME |  $MEMORY |  $(cpu) |  $UPTIME | $DATE_TIME "
-	sleep 15s
+	sleep 5s
 done &
 
 #xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 32 
