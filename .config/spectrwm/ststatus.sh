@@ -4,7 +4,7 @@
 #wmname LG3D &
 feh --bg-scale ~/Pictures/Wallpapers/37572_grey_1.jpg &
 dunst -conf ~/.config/dunst/dunstrc &
-notify-send -u low "Solus SpectrWm" "All right" -i ~/.config/spectrwm/Solus.png &
+#notify-send -u low "Solus SpectrWm" "All right" -i ~/.config/spectrwm/Solus.png &
 
 cpu(){
   read cpu a b c previdle rest < /proc/stat

@@ -2,14 +2,23 @@
 <openbox_menu>
     <menu id="root-menu" label="OpenBox 3">
         <menu id="1" label="Development">
+            <item label="D-Feet"> <action name="Execute">
+                <execute>d-feet</execute>
+            </action> </item>
             <item label="DBeaver"> <action name="Execute">
                 <execute>dbeaver</execute>
+            </action> </item>
+            <item label="eclipse"> <action name="Execute">
+                <execute>/opt/eclipse/eclipse</execute>
             </action> </item>
             <item label="Fluid"> <action name="Execute">
                 <execute>fluid</execute>
             </action> </item>
             <item label="Meld"> <action name="Execute">
                 <execute>meld</execute>
+            </action> </item>
+            <item label="STS4"> <action name="Execute">
+                <execute>/opt/sts-4.6.1.RELEASE/SpringToolSuite4</execute>
             </action> </item>
             <item label="Sublime Text"> <action name="Execute">
                 <execute>/opt/sublime_text_3/sublime_text</execute>
@@ -45,6 +54,9 @@
         <menu id="7" label="Multimedia">
             <item label="ALSA mixer"> <action name="Execute">
                 <execute>gnome-terminal -e alsamixer</execute>
+            </action> </item>
+            <item label="Cheese"> <action name="Execute">
+                <execute>cheese</execute>
             </action> </item>
         </menu>
         <menu id="5" label="Network">
@@ -98,65 +110,14 @@
         <menu id="37" label="System">
             <menu id="36" label="Settings">
                 <menu id="21" label="GNOME">
-                    <item label="About"> <action name="Execute">
-                        <execute>gnome-control-center info-overview</execute>
-                    </action> </item>
                     <item label="Adobe Flash Player"> <action name="Execute">
                         <execute>flash-player-properties</execute>
                     </action> </item>
                     <item label="Advanced Network Configuration"> <action name="Execute">
                         <execute>nm-connection-editor</execute>
                     </action> </item>
-                    <item label="Applications"> <action name="Execute">
-                        <execute>gnome-control-center applications</execute>
-                    </action> </item>
-                    <item label="Background"> <action name="Execute">
-                        <execute>gnome-control-center background</execute>
-                    </action> </item>
-                    <item label="Bluetooth"> <action name="Execute">
-                        <execute>gnome-control-center bluetooth</execute>
-                    </action> </item>
-                    <item label="Color"> <action name="Execute">
-                        <execute>gnome-control-center color</execute>
-                    </action> </item>
-                    <item label="Date &amp; Time"> <action name="Execute">
-                        <execute>gnome-control-center datetime</execute>
-                    </action> </item>
-                    <item label="Displays"> <action name="Execute">
-                        <execute>gnome-control-center display</execute>
-                    </action> </item>
                     <item label="Firewall Configuration"> <action name="Execute">
                         <execute>gufw</execute>
-                    </action> </item>
-                    <item label="Keyboard Shortcuts"> <action name="Execute">
-                        <execute>gnome-control-center keyboard</execute>
-                    </action> </item>
-                    <item label="Mouse &amp; Touchpad"> <action name="Execute">
-                        <execute>gnome-control-center mouse</execute>
-                    </action> </item>
-                    <item label="Network"> <action name="Execute">
-                        <execute>gnome-control-center network</execute>
-                    </action> </item>
-                    <item label="Notifications"> <action name="Execute">
-                        <execute>gnome-control-center notifications</execute>
-                    </action> </item>
-                    <item label="Online Accounts"> <action name="Execute">
-                        <execute>gnome-control-center online-accounts</execute>
-                    </action> </item>
-                    <item label="Power"> <action name="Execute">
-                        <execute>gnome-control-center power</execute>
-                    </action> </item>
-                    <item label="Settings"> <action name="Execute">
-                        <execute>gnome-control-center</execute>
-                    </action> </item>
-                    <item label="Sound"> <action name="Execute">
-                        <execute>gnome-control-center sound</execute>
-                    </action> </item>
-                    <item label="Users"> <action name="Execute">
-                        <execute>gnome-control-center user-accounts</execute>
-                    </action> </item>
-                    <item label="Wi-Fi"> <action name="Execute">
-                        <execute>gnome-control-center wifi</execute>
                     </action> </item>
                 </menu>
                 <item label="ARandR"> <action name="Execute">
