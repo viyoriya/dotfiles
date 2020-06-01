@@ -6,6 +6,12 @@ EDITOR="nvim"
 
 callAgain(){
     
+    if [[ $1 == "" ]]; then
+        echo "Please enter dir name as argument"
+        exit
+    fi
+
+    
     if [[ $1 == *"/q"* ]]; then
         exit
     fi
