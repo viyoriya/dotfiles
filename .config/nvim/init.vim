@@ -81,7 +81,8 @@ set colorcolumn=90
 
 set fileformats=unix,dos,mac
 
-set tabline=
+"set tabline=
+"set guitablabel=\[%N\]\ %t\ %M
 
 if exists('$SHELL')
     set shell=$SHELL
@@ -206,6 +207,37 @@ set statusline+=%1*\ ln\ %02l/%L\
 set statusline+=%0*\ %{winnr()}/%{Totalbuffers()}\ 
 
 "set statusline=%1*\ %{toupper(g:cm[mode()])}\ %F%m%r%h%w%=\ %Y\ col\ %c\ %1*\ ln\ %l\/%L\ %0*\ [%{winnr()}/%n]
+
+"Tabline
+function! Tabline()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    let tab = i + 1
+    let winnr = tabpagewinnr(tab)
+    let buflist = tabpagebuflist(tab)
+    let bufnr = buflist[winnr - 1]
+    let bufname = bufname(bufnr)
+    let bufmodified = getbufvar(bufnr, "&mod")
+
+    let s .= '%' . tab . 'T'
+    let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
+    let s .= ' ' . tab .':'
+    let s .= (bufname != '' ? '['. fnamemodify(bufname, ':t') . '] ' : '[No Name] ')
+
+    if bufmodified
+      let s .= '[+] '
+    endif
+  endfor
+
+  let s .= '%#TabLineFill#'
+  if (exists("g:tablineclosebutton"))
+    let s .= '%=%999XX'
+  endif
+  return s
+endfunction
+set tabline=%!Tabline()
+
+
 
 "*****************************************************************************
 "" Abbreviations
