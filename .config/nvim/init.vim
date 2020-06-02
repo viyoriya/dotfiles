@@ -209,6 +209,9 @@ set statusline+=%0*\ %{winnr()}/%{Totalbuffers()}\
 "set statusline=%1*\ %{toupper(g:cm[mode()])}\ %F%m%r%h%w%=\ %Y\ col\ %c\ %1*\ ln\ %l\/%L\ %0*\ [%{winnr()}/%n]
 
 "Tabline
+
+let g:tablineclosebutton=1
+
 function! Tabline()
   let s = ''
   for i in range(tabpagenr('$'))
