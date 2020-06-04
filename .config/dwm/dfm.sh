@@ -1,13 +1,13 @@
 #!/bin/bash
 
 #Custom Nord color
-DMENU_OPT=" -i -nb #17191C -nf #5E81AC -sb #4C566A -sf #D8DEE9 -fn Iosevka:style=Regular:pixelsize=12"    
+DMENU_OPT=" -i -nb #17191C -nf #7D7F82 -sb #4C566A -sf #D8DEE9 -fn Iosevka:style=Regular:pixelsize=13"    
 DMENU="dmenu -l 10 -p Dir $DMENU_OPT"
 SLASH="/"
 #Change your terminal and Editor
 TERM="st -e "
 EDITOR="nvim"
-#Change it to your application
+#Change it to your default  application
 IMG="feh"
 PDF="zathura"
 TAR="tar -xvzf"
@@ -34,7 +34,7 @@ openFile(){
 }
 # type q to exit
 callAgain(){
-    if [[ $1 == *"/q"* ]]; then
+    if [[ $1 == *"/quit"* ]]; then
         exit
     fi
 
@@ -48,3 +48,5 @@ callAgain(){
 }
 
 callAgain "$HOME/"
+
+
