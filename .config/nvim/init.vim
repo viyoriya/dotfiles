@@ -37,9 +37,14 @@ endif
 
 "" Color
 Plug 'joshdick/onedark.vim'
+Plug 'lilydjwg/colorizer'
 "Plug 'tomasr/molokai'
 "Plug  'arp242/startscreen.vim' 
 "Plug 'skywind3000/vim-quickui'
+
+" for Java Dev
+"Plug 'artur-shaik/vim-javacomplete2'
+
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -77,7 +82,7 @@ set ignorecase
 set smartcase
 
 set cursorline
-set colorcolumn=90
+"set colorcolumn=90
 
 set fileformats=unix,dos,mac
 
@@ -275,29 +280,68 @@ if !exists('*s:setupWrapping')
 endif
 
 "*****************************************************************************
-"" Autocmd Rules
+"" Autocmd common rules
 ""*****************************************************************************
 
-" Remember last cursor position
- autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup vimrc-sync-fromstart
+  autocmd!
+  autocmd BufEnter * :syntax sync maxlines=200
+augroup END
 
+"" Remember cursor position
+augroup vimrc-remember-cursor-position
+  autocmd!
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+
+"" txt
+augroup vimrc-wrapping
+  autocmd!
+  autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
+augroup END
+
+"" make/cmake
+augroup vimrc-make-cmake
+  autocmd!
+  autocmd FileType make setlocal noexpandtab
+  autocmd BufNewFile,BufRead CMakeLists.txt setl filetype=cmake
+augroup END
+
+set autoread
+
+"for java
+
+autocmd FileType java setl ts=4 sw=4 sts=2 et pa+=** commentstring=//\ %s
+autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<cr>
 
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
 
+
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
-"" Split
+"" Split window
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
+
+"" Close window & close all except active window
+noremap <Leader>wc :close<CR>
+noremap <Leader>wo :only<CR>
 
 "" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
+
+"Source nvim init.vim
+nnoremap <leader>r :source $MYVIMRC<cr>
+nnoremap <leader>o :e $MYVIMRC<cr>
+"Add '"quotes"' 
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
 
 "" Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -308,11 +352,11 @@ nnoremap <leader>. :lcd %:p:h<CR>
 " Opens a tab edit command with the path of the currently edited file filled
 "noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
-nnoremap <silent> <leader>b :Buffers<CR>
+"cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
+"nnoremap <silent> <leader>b :Buffers<CR>
 
 "Recovery commands from history through FZF
-nmap <leader>y :history:<CR>
+nnoremap <leader>y :history:<CR>
 
 "" Copy/Paste/Cut
 if has('unnamedplus')
@@ -358,7 +402,7 @@ vnoremap K :m '<-2<CR>gv=gv
 au BufAdd,BufNewFile *.* nested tab sball
 
 "fun! DirCheck()
-"    if &ft = 'netrw'
+"    if &ft == 'netrw'
 "        return
 "    endif
 "    nested tab sball
@@ -392,26 +436,36 @@ nnoremap <silent><F2> :Vexplore<CR>
 nnoremap <silent><F3> :wincmd W<CR>
 nnoremap <silent><F4> :call <sid>close_explorer_buffers()<CR>
 
-" Dmenu
+" Dmenu filebrowser 
 
-function! Chomp(str)
+fun! Chomp(str)
   return substitute(a:str, '\n$', '', '')
-endfunction
+endfun
 
-function! DmenuOpen(cmd)
-  let fname = Chomp(system("ls -a | dmenu -i -l 20 -p " . a:cmd))
-  if empty(fname)
-    return
-  endif
-  execute a:cmd . " " . fname
-endfunction
+fun! DmenuCallAgain(fileName,cmd)
+    let slash = "/"
+    let fname = Chomp(system("ls -a " . a:fileName ." | dmenu -l 20 -p Dir"))
+    if empty(fname)
+        return
+    endif
+    let finalFileName = a:fileName . fname 
+    let dirName       = a:fileName . fname . slash
+    if(isdirectory(dirName))
+     return DmenuCallAgain(dirName,a:cmd)
+    endif
+    execute a:cmd . finalFileName
+endfun
 
-noremap <Leader>e :call DmenuOpen("e")<CR>
-noremap <Leader>t :call DmenuOpen("tabe")<CR>
+nnoremap <Leader>e :call DmenuCallAgain($HOME."/","e")<CR>
+" Too much dwm & dmenu so p shortcut
+nnoremap <C-p> :call DmenuCallAgain($HOME."/","e")<CR>
+nnoremap <Leader>p :call DmenuCallAgain($HOME."/","vsplit")<CR>
+"I dont use this
+"noremap <Leader>t :call DmenuCallAgain($HOME."/","tabe")<CR>
 
 "Startify
 
-noremap <Leader>s :Startify<CR>
+nnoremap <Leader>s :Startify<CR>
 
 let g:startify_session_dir = '~/.config/nvim/session'
 let g:startify_fortune_use_unicode = 1
