@@ -2,7 +2,7 @@
 	name = viyoriya
 	email = viyoriya@gmail.com
 [core]
-	editor = nvim
+	editor = subl -n -w
 [color]
 	ui = auto
 	branch = auto

@@ -7,7 +7,7 @@
 #xsetroot -cursor_name left_ptr &
 xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16 &
 compton -e 0.92 -o 0.92 -b &
-feh --bg-scale ~/Pictures/wallpapers/u_muhahah_the_sixer_5.jpg &
+feh --bg-scale ~/Pictures/Wallpapers/u_muhahah_the_sixer_5.jpg &
 dunst -conf ~/.config/dunst/dunstrc &
 notify-send -u low "Solus catwm" "All right" -i ~/.config/catwm/Solus.png &
 

@@ -36,8 +36,11 @@ if exists('make')
 endif
 
 "" Color
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'lilydjwg/colorizer'
+
 "Plug 'tomasr/molokai'
 "Plug  'arp242/startscreen.vim' 
 "Plug 'skywind3000/vim-quickui'
@@ -120,14 +123,16 @@ let no_buffers_menu=1
 syntax on
 set ruler
 set number relativenumber
-set splitbelow                          
-set splitright                        
+"set splitbelow                          
+"set splitright                        
 
 "colorscheme molokai
 colorscheme onedark
 
-"set gfn=Hack\ Nerd\ Font\ 9
-set guifont=Hack\ Nerd\ Font\ 9
+"set gfn=Hack\ Font\ 20
+"set guifont=Hack:syle=Regular\ 9
+"set guifont=JetBrains\ Mono:style=Bold:size=25
+
 
 set mousemodel=popup
 set t_Co=256
@@ -397,6 +402,11 @@ vnoremap K :m '<-2<CR>gv=gv
 "" Custom configs
 "*****************************************************************************
 
+" tab line
+hi TabLine      ctermfg=255  ctermbg=238  cterm=NONE
+hi TabLineSel   ctermfg=17   ctermbg=190  cterm=NONE
+hi TabLineFill  ctermfg=255  ctermbg=238  cterm=NONE
+
 " Open buffers in Tab and netwr will open in left
 
 au BufAdd,BufNewFile *.* nested tab sball
@@ -409,32 +419,53 @@ au BufAdd,BufNewFile *.* nested tab sball
 "endfun
 "au BufAdd,BufNewFile * call DirCheck()
 
-" tab line
-hi TabLine      ctermfg=255  ctermbg=238  cterm=NONE
-hi TabLineSel   ctermfg=17   ctermbg=190  cterm=NONE
-hi TabLineFill  ctermfg=255  ctermbg=238  cterm=NONE
 
 "netrw dir tree
-let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 18
-let g:netrw_fastbrowse = 0
+"let g:netrw_banner = 0
+""let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 18
+"let g:netrw_fastbrowse = 0
 
-"autocmd FileType netrw setl bufhidden=wipe
+""autocmd FileType netrw setl bufhidden=wipe
 
-function! s:close_explorer_buffers()
-    for i in range(1, bufnr('$'))
-        if getbufvar(i, '&filetype') == "netrw"
-            silent exe 'bdelete! ' . i
-        endif
-    endfor
-endfunction
+"function! s:close_explorer_buffers()
+"    for i in range(1, bufnr('$'))
+"        if getbufvar(i, '&filetype') == "netrw"
+"            silent exe 'bdelete! ' . i
+"        endif
+"    endfor
+"endfunction
 
-nnoremap <silent><F2> :Vexplore<CR>
-nnoremap <silent><F3> :wincmd W<CR>
-nnoremap <silent><F4> :call <sid>close_explorer_buffers()<CR>
+"nnoremap <silent><F2> :Vexplore<CR>
+"nnoremap <silent><F3> :wincmd W<CR>
+"nnoremap <silent><F4> :call <sid>close_explorer_buffers()<CR>
+
+
+"" fzf as file browser
+
+command! -bang -nargs=? -complete=dir FilesWithPreview
+    \ call fzf#vim#files('~/', {'options': ['--layout=reverse','--info=inline', '--preview', 'cat {}']}, <bang>0)
+
+fun! ChangeFzfLayout(fLoKey)
+    if a:fLoKey == "F2"
+        let g:fzf_layout = { 'window': '70vnew' }
+        call fzf#vim#files('~/')
+    else
+        let g:fzf_layout = {'down': '40%' }
+        call fzf#vim#files('~/')
+    endif    
+endfun    
+
+nnoremap <C-e> <Esc>:FilesWithPreview!<CR>'
+nnoremap <C-f> <Esc>:call ChangeFzfLayout("f")<CR>'
+nnoremap <F2>  <Esc>:call ChangeFzfLayout("F2")<CR>'
+
+inoremap <C-f> <Esc>:BLines<CR>
+nnoremap <C-h> <Esc>:History:<CR>
+nnoremap <C-m> <Esc>:Maps!<CR>
+
 
 " Dmenu filebrowser 
 
@@ -497,6 +528,8 @@ let g:startify_custom_header = [
 
 let g:startify_custom_footer =
            \ ['', " Have a nice day vj", '']
+
+
 
 
 "*****************************************************************************
