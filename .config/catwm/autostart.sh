@@ -43,9 +43,9 @@ function status {
 ff="/tmp/$RANDOM.catwm.fifo"
 [[ -p $ff ]] || mkfifo -m 600 "$ff"
 
-while read -t 30 -r wmout || true; do
-
-    printf "%s%s%s\n" "%{l} $wmout%{F#FF62FF00}$(riya) %{F#FF929496}$(catFocus)" "%{r}$(status)"
+while read -r wmout || true; do
+    num=$((wmout+1))
+    printf "%s%s%s\n" "%{l} $num%{F#FF62FF00}$(riya) %{F#FF929496}$(catFocus)" "%{r}$(status)"
    #sleep 5s
 done < "$ff" | lemonbar -d -g x18xx -u 3 -n "catwm" -B "#FF1F222D" -f "monospace:size=9" -f "Font Awesome 5 Brands Regular:style=Regular:size=9" -f "Font Awesome 5 Free Solid:style=Solid:size=9" &
 

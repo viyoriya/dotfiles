@@ -168,13 +168,13 @@ set titleold="Terminal"
 set titlestring=%F
 
 " status bar colors
-au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=red
-au InsertLeave * hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=blue
-hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=blue
+au InsertEnter * hi statusline guifg=black guibg=#d7afff ctermfg=black ctermbg=darkred
+au InsertLeave * hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=darkblue
+hi statusline guifg=black guibg=#8fbfdc ctermfg=black ctermbg=darkblue
 
-hi User1 ctermfg=007 ctermbg=239 guibg=#4e4e4e guifg=#adadad
-hi User2 ctermfg=007 ctermbg=236 guibg=#303030 guifg=#adadad
-hi User3 ctermfg=236 ctermbg=236 guibg=#303030 guifg=#303030
+hi User1 ctermfg=147 ctermbg=239 guibg=#4e4e4e guifg=#adadad
+hi User2 ctermfg=008 ctermbg=236 guibg=#303030 guifg=#adadad
+hi User3 ctermfg=234 ctermbg=234 guibg=#303030 guifg=#303030
 hi User4 ctermfg=239 ctermbg=239 guibg=#4e4e4e guifg=#4e4e4e
 
 function Totalbuffers()
@@ -312,12 +312,18 @@ augroup vimrc-make-cmake
   autocmd BufNewFile,BufRead CMakeLists.txt setl filetype=cmake
 augroup END
 
+
+" .conf file sysntax highlighting
+au BufEnter,BufRead *.conf setf dosini
+
+
 set autoread
 
 "for java
 
 autocmd FileType java setl ts=4 sw=4 sts=2 et pa+=** commentstring=//\ %s
 autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(expand('%'), 1) '&& java' shellescape(expand('%:r'), 1)<cr>
+
 
 "*****************************************************************************
 "" Mappings
