@@ -38,8 +38,10 @@ endif
 "" Color
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'lilydjwg/colorizer'
+
+Plug 'joshdick/onedark.vim'
+"Plug 'gruvbox-community/gruvbox' 
 
 "Plug 'tomasr/molokai'
 "Plug  'arp242/startscreen.vim' 
