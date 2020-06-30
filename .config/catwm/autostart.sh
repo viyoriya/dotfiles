@@ -40,14 +40,18 @@ function status {
     echo -e  " %{$NB}\uf028%{F-} %{$WH}$VOLUME%{F-} | %{$NB}\uf538%{F-} %{$WH}$MEMORY%{F-} | %{$NB}\uf2db%{F-} %{$WH}$(cpu)%{F-} | %{$NB}\uf254%{F-} %{$WH}$UPTIME%{F-} | $DATE_TIME  "
 }
 
+
 ff="/tmp/$RANDOM.catwm.fifo"
 [[ -p $ff ]] || mkfifo -m 600 "$ff"
 
-while read -r wmout || true; do
-    num=$((wmout+1))
-    printf "%s%s%s\n" "%{l} $num%{F#FF62FF00}$(riya) %{F#FF929496}$(catFocus)" "%{r}$(status)"
-   #sleep 5s
-done < "$ff" | lemonbar -d -g x18xx -u 3 -n "catwm" -B "#FF1F222D" -f "monospace:size=9" -f "Font Awesome 5 Brands Regular:style=Regular:size=9" -f "Font Awesome 5 Free Solid:style=Solid:size=9" &
+while read -t 10 -r wmout || true ; do        
+
+    num="$(echo $wmout | sed -n 's/D://p')"
+    [ ! -z "$num" ] && desktopNum=$num
+
+    printf "%s%s\n" "%{l} $desktopNum%{F#FF62FF00}$(riya) %{F#FF929496}$(catFocus)" "%{r}$(status)"
+    sleep 3s
+done < "$ff" | lemonbar -p -d -g x18xx -u 3 -n "catwm" -B "#FF1F222D" -f "Monospace:size=9" -f "Font Awesome 5 Brands Regular:style=Regular:size=9" -f "Font Awesome 5 Free Solid:style=Solid:size=9" &
 
 catwm > "$ff"
 
