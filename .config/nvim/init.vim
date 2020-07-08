@@ -472,7 +472,7 @@ nnoremap <F2>  <Esc>:call ChangeFzfLayout("F2")<CR>'
 
 inoremap <C-f> <Esc>:BLines<CR>
 nnoremap <C-h> <Esc>:History:<CR>
-nnoremap <C-m> <Esc>:Maps!<CR>
+"nnoremap <C-m> <Esc>:Maps!<CR>
 
 
 " Dmenu filebrowser 

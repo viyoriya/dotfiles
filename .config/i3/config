@@ -300,7 +300,7 @@ bindsym $mod+m bar mode toggle
 ##################################### i3-gaps ##################################################
 
 # Set i3-gaps - inner/outer gaps
-gaps inner 14
+gaps inner 2
 gaps outer -2
 
 # Additionally, you can bind keys to changing the gap size.

@@ -60,9 +60,6 @@ static const AppRule rules[] = { \
 
 };
 
-/* helper for spawning shell commands, usually you don't edit this */
-#define SHCMD(cmd) {.com = (const char*[]){"/bin/sh", "-c", cmd, NULL}}
-
 /*
  * EDIT THIS: commands
  * Adjust and add these to the shortcuts below to launch anything you want by
@@ -72,8 +69,17 @@ static const AppRule rules[] = { \
  * window. The title of the scratchpad window should also match SCRPDNAME from
  * above
  */
+
 static const char *scrpcmd[]        = { "st", "-e", "scratchpad", NULL };
 
+static const char dmenufont[]       = "Iosevka:style=Bold:pixelsize=12"; 
+static const char col_gray1[]       = "#2E3440";
+static const char col_gray3[]       = "#929496";
+static const char col_cyan[]        = "#7d7f82"; 
+static const char col_gray4[]       = "#010b13";
+
+static char dmenumon[2]             = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char *dmenucmd[]		= { "dmenu_run", "-p", "Find","-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]        = { "st", NULL };
 static const char *chromecmd[]      = { "google-chrome-stable", NULL };
 static const char *rangercmd[]      = { "st","-e","ranger", NULL };
@@ -87,6 +93,9 @@ static const char *volumeDown[]     = { "amixer","sset","Master","5%-",NULL};
 #define DESKTOPCHANGE(K,N) \
     {  MOD4,             K,              change_desktop, {.i = N}}, \
     {  MOD4|ShiftMask,   K,              client_to_desktop, {.i = N}},
+
+/* helper for spawning shell commands, usually you don't edit this */
+#define SHCMD(cmd) {.com = (const char*[]){"/bin/sh", "-c", cmd, NULL}}
 
 /*
  * EDIT THIS: shortcuts
@@ -104,6 +113,7 @@ static key keys[] = {
     {  MOD4,             XK_F3,         spawn,             {.com = rangercmd}},    
     {  MOD4,             XK_F4,         spawn,             {.com = sublcmd}},  
     {  MOD4,             XK_F5,         spawn,             {.com = firefoxcmd}}, 
+    {  MOD4,             XK_p,          spawn,             {.com = dmenucmd}}, 
     {  MOD4,             XK_BackSpace,  focusurgent,       {NULL}},
     {  MOD4,             XK_q,          killclient,        {NULL}},
     /* move the current window to the center of the screen, floating */
@@ -128,8 +138,8 @@ static key keys[] = {
     {  MOD4,             XK_f,          switch_mode,       {.i = FIBONACCI}},
     {  MOD4,             XK_d,          switch_mode,       {.i = DUALSTACK}},
     {  MOD4,             XK_e,          switch_mode,       {.i = EQUAL}},
-    {  MOD4,             XK_z,          rotate_mode,       {.i = -1}},
-    {  MOD4,             XK_x,          rotate_mode,       {.i = +1}},
+    {  MOD4,             XK_Left,       rotate_mode,       {.i = -1}},
+    {  MOD4,             XK_Right,      rotate_mode,       {.i = +1}},
     {  MOD4|SHIFT,       XK_q,          quit,              {.i = 0}}, /* quit with exit value 0 */
     {  MOD4|SHIFT,       XK_r,          quit,              {.i = 1}}, /* quit with exit value 1 */
     {  MOD4,             XK_0,          spawn,             SHCMD("~/.config/fwm/power-menu.sh") },
@@ -201,4 +211,5 @@ static Button buttons[] = {
     {  MOD1,    Button3,     spawn,         {.com = rofiruncmd}},
 };
 #endif
+
 
