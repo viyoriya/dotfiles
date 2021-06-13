@@ -1,0 +1,10 @@
+#!/bin/bash
+
+conntype=$(ip route | awk '/default/ { print substr($5,1,1) }')
+if [ -z "$conntype" ]; then
+       echo -e "  "
+elif [ "$conntype" = "e" ]; then
+       echo -e "  "
+elif [ "$conntype" = "w" ]; then
+      echo -e ""
+fi      

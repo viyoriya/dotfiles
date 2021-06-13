@@ -1,0 +1,17 @@
+configuration {
+	width: 38;
+	lines: 8;
+	columns: 2;
+	font: "Hack Regular 9";
+	bw: 1;
+	padding: 5;
+	fixed-num-lines: true;
+	show-icons: true;
+	icon-theme: "Papirus-Dark";
+	drun-display-format: "{name}";
+	sidebar-mode: false;
+	dpi: 96;
+	theme: "~/.config/rofi/themes/viyoriya.rasi";
+	display-window: "";
+	display-drun: "";
+}

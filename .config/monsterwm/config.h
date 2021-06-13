@@ -39,19 +39,13 @@ static const AppRule rules[] = { \
     { "Firefox",        3,    True,   False  },
 };
 
-static const char dmenufont[]       = "Iosevka:style=Bold:pixelsize=12"; 
-static const char col_gray1[]       = "#2E3440";
-static const char col_gray3[]       = "#929496";
-static const char col_cyan[]        = "#7d7f82"; 
-static const char col_gray4[]       = "#010b13";
+/* helper for spawning shell commands */
+#define SHCMD(cmd) {.com = (const char*[]){"/bin/sh", "-c", cmd, NULL}}
 
 /**
  * custom commands
  * must always end with ', NULL };'
  */
-
-static char dmenumon[2]             = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]		= { "dmenu_run", "-p", "Find","-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]        = { "st", NULL };
 static const char *chromecmd[]      = { "google-chrome-stable", NULL };
 static const char *rangercmd[]      = { "st","-e","ranger", NULL };
@@ -62,12 +56,10 @@ static const char *rofiwindowcmd[]  = { "rofi","-show","window", NULL };
 static const char *volumeUp[]       = { "amixer","sset","Master","5%+",NULL};
 static const char *volumeDown[]     = { "amixer","sset","Master","5%-",NULL};
 
+
 #define DESKTOPCHANGE(K,N) \
     {  MOD4,             K,              change_desktop, {.i = N}}, \
     {  MOD4|ShiftMask,   K,              client_to_desktop, {.i = N}},
-
-/* helper for spawning shell commands */
-#define SHCMD(cmd) {.com = (const char*[]){"/bin/sh", "-c", cmd, NULL}}
 
 /**
  * keyboard shortcuts
@@ -80,8 +72,7 @@ static Key keys[] = {
     {  MOD4,             XK_F2,         spawn,             {.com = chromecmd}},
     {  MOD4,             XK_F3,         spawn,             {.com = rangercmd}},    
     {  MOD4,             XK_F4,         spawn,             {.com = sublcmd}},  
-    {  MOD4,             XK_F5,         spawn,             {.com = firefoxcmd}},
-    {  MOD4,             XK_p,          spawn,             {.com = dmenucmd}},
+    {  MOD4,             XK_F5,         spawn,             {.com = firefoxcmd}}, 
     {  MOD4,             XK_b,          togglepanel,       {NULL}},
     {  MOD4,             XK_BackSpace,  focusurgent,       {NULL}},
     {  MOD4,             XK_q,          killclient,        {NULL}},
@@ -91,8 +82,8 @@ static Key keys[] = {
     {  MOD4,             XK_l,          resize_master,     {.i = +10}}, /* increase size in px */
     {  MOD4,             XK_d,          resize_stack,      {.i = -10}}, /* shrink   size in px */
     {  MOD4,             XK_i,          resize_stack,      {.i = +10}}, /* grow     size in px */
-    {  MOD4,             XK_Left,       rotate,            {.i = -1}},
-    {  MOD4,             XK_Right,      rotate,            {.i = +1}},
+    {  MOD4|CONTROL,     XK_h,          rotate,            {.i = -1}},
+    {  MOD4|CONTROL,     XK_l,          rotate,            {.i = +1}},
     {  MOD4|SHIFT,       XK_h,          rotate_filled,     {.i = -1}},
     {  MOD4|SHIFT,       XK_l,          rotate_filled,     {.i = +1}},
     {  MOD4,             XK_Tab,        last_desktop,      {NULL}},

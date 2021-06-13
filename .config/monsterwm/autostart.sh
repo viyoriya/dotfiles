@@ -1,15 +1,14 @@
-#!/usr/bin/env sh
+#! /bin/bash
 
 #xset +fp ~/.fonts/ &
 #xset fp rehash &
 #for dir in /font/dir1/ /font/dir2/; do xset +fp $dir; done && xset fp rehash
 #set wmname LG3D &
-#xsetroot -cursor_name left_ptr &
-xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16 &
+xsetroot -cursor_name left_ptr &
 compton -e 0.92 -o 0.92 -b &
-feh --bg-scale ~/Pictures/wallpapers/r_Dark0de_1.png &
+feh --bg-scale ~/Pictures/Wallpapers/vj73avvswvg11.png &
 dunst -conf ~/.config/dunst/dunstrc &
-notify-send -u low "Solus monsterwm" "All right" -i ~/.config/monsterwm/Solus.png &
+notify-send -u low "Void monsterwm" "All right" -i ~/.config/monsterwm/void-transparent.png &
 
 NB=F#FF5e81ac
 WH=F#FF929496
@@ -30,9 +29,10 @@ cpu(){
   echo -e "$cpu%"
 }
 function status {
-    VOLUME="$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
+#    VOLUME="$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
+    VOLUME="Nope"
     MEMORY=$(free -m | awk '/Mem/ {printf "%d/%d MB\n", $3, $2 }')
-    UPTIME=$(uptime | awk -F, '{print $1}' | awk '{$1=$2=""; print substr($0,3)}')
+    UPTIME="$(uptime | sed 's/.*up \([^,]*\),.*/\1/')"
     DATE_TIME=$(date +"%{$NB}%{F-}%{$WH} %d/%m %{F-}%{$NB}%{F-}%{$NEON} %H:%M%{F-}")
     echo -e  " %{$NB}\uf028%{F-} %{$WH}$VOLUME%{F-} | %{$NB}\uf538%{F-} %{$WH}$MEMORY%{F-} | %{$NB}\uf2db%{F-} %{$WH}$(cpu)%{F-} | %{$NB}\uf254%{F-} %{$WH}$UPTIME%{F-} | $DATE_TIME  "
 }

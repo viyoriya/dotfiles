@@ -1,0 +1,4 @@
+#!/bin/bash
+
+DATE_TIME=$(date +" %d/%m  %H:%M")
+echo -e "$DATE_TIME "

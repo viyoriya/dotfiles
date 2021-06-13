@@ -1,6 +1,6 @@
 
 * {
-    font: "Monospace Regular 9";
+    font: "Hack Regular 9";
     selected-normal-foreground:  rgba ( 29, 35, 48, 100 % );
     selected-normal-background:  rgba ( 129, 161, 193, 100 % );
     selected-active-foreground:  rgba ( 255, 255, 255, 100 % );
@@ -125,7 +125,7 @@
     text-color: @normal-foreground;
 }
 #prompt {
-    font: "Monospace Bold 10";
+    font: "Hack Bold 10";
     spacing:    0;
     padding: 0px 5px  0px 0px;
     text-color: @normal-foreground;

@@ -6,21 +6,24 @@ static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:style=Bold:pixelsize=12" }; /* "monospace:style=regular:size=10" */
-static const char dmenufont[]       = "Iosevka:style=Bold:pixelsize=12"; /* "monospace:size=10"; */
-static const char col_gray1[]       = "#2E3440";
-static const char col_gray2[]       = "#4C566A";
-static const char col_gray3[]       = "#929496"; /*D8DEE9*/
-static const char col_gray4[]       = "#010b13"; /*E5E9F0*/
-static const char col_cyan[]        = "#7d7f82"; /*#5e81ac #71757D*/
+static const char *fonts[]          = { "Iosevka:style=Bold:size=9","Font Awesome 5 Brands Regular:style=Regular:size=9","Font Awesome 5 Free Solid:style=Solid:size=9", "Noto Color Emoji:style=Regular:pixelsize=12" }; 
+static const char dmenufont[]       =   "Iosevka:style=Bold:size=9";
+
+static const char col_gray1[]       = "#1F222D"; // "#2E3440"; 
+static const char col_gray2[]       = "#929496"; 
+static const char col_red[]         = "#956671";
+static const char col_border[]      = "#000000"; // "#5E81AC";*/
+
+static const char col_title[]       = "#1F80E0"; // "#62FF00";
+
 static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	//                   fg          bg         border   
+	[SchemeNorm]   = { col_gray2, col_gray1, col_gray1 },
+	[SchemeSel]    = { col_gray1, col_gray2, col_red  },
+	[SchemeTitle]  = { col_title, col_gray1, col_red },
 };
 
 /* tagging */
-/*static const char *tags[] = { " 1", " 2", " 3", " 4", " 5", " 6", " 7", " 8", " 9" };*/
 static const char *tags[] = { "  I", " II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
 
 static const Rule rules[] = {
@@ -28,11 +31,11 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class      instance    title     tags mask     isfloating   monitor */
-	{ "St",       NULL,       NULL,       0,            0,           -1 },
-	{ "Google-chrome",  NULL, NULL,       1 << 1,      	0,           -1 },
-	{ "Subl",     NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 3,       0,           -1 },
+	/* class          instance      title     tags mask  isfloating   monitor */
+	{ "St",             NULL,       NULL,       0,          0,          -1 },
+//	{ "Google-chrome",  NULL,       NULL,       1 << 1,     0,          -1 },
+	{ "VSCodium",       NULL,       NULL,       1 << 2,     0,          -1 },
+	{ "firefox",        NULL,       NULL,       1 << 3,     0,          -1 },
 
 };
 
@@ -61,28 +64,27 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] 			= 	"0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]		= { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[]		= { "dmenu_run","-p","   Find ","-m", dmenumon,"-fn",dmenufont,"-nb", col_gray1, "-nf", col_gray2, "-sb", col_gray2, "-sf", col_gray1, NULL };
 static const char *termcmd[]  		= { "st", NULL };
-static const char *chromecmd[]    	= { "google-chrome-stable", NULL };
+static const char *nvimcmd[]    	= { "st","-e","nvim", NULL };
 static const char *rangercmd[]      = { "st","-e","ranger", NULL };
-/*static const char *nautiluscmd[]    = { "nautilus", NULL }; */
-static const char *sublcmd[]    	= { "subl", NULL };
+static const char *vscodecmd[]    	= { "codium", NULL };
 static const char *firefoxcmd[]  	= { "firefox",NULL};
-static const char *rofiruncmd[]    	= { "rofi","-show","drun", NULL };
-static const char *rofiwindowcmd[]	= { "rofi","-show","window", NULL };
+static const char *rofiwincmd[]  	= { "rofi","-show","window", NULL }; 
+/* static const char *xmenucmd[]       = { "st","-e","xmenu","<", "~/.cache/xdg-menu/menu",NULL}; */
 static const char *volumeUp[]    	= {	"amixer","sset","Master","5%+",NULL};
 static const char *volumeDown[]  	= {	"amixer","sset","Master","5%-",NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,                       XK_F2, 	   spawn,          {.v = chromecmd } },
-	{ MODKEY,                       XK_F3,     spawn,          {.v = rangercmd } },
-	{ MODKEY,                       XK_F4,     spawn,          {.v = sublcmd } },
+	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd   } },
+	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd    } },
+	{ MODKEY,                       XK_F2, 	   spawn,          {.v = nvimcmd  } },
+	{ MODKEY,                       XK_F3,     spawn,          {.v = rangercmd  } },
+	{ MODKEY,                       XK_F4,     spawn,          {.v = vscodecmd  } },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = firefoxcmd } },
-	{ MODKEY,                       XK_r,      spawn,          {.v = rofiruncmd } },
-	{ MODKEY,                       XK_w,      spawn,          {.v = rofiwindowcmd } },
+	{ MODKEY,                       XK_r,      spawn,          SHCMD("~/.config/dwm/xmenu-apps") },
+	{ MODKEY,                       XK_w,      spawn,          {.v = rofiwincmd } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_z, 	   zoom,           {0} },
 	{ MODKEY,			            XK_q,      killclient,     {0} },
@@ -103,14 +105,12 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ControlMask,			XK_comma,  cyclelayout,    {.i = -1 } },
-	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_v,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_t,      tag,            {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY,              			XK_Right,  shiftview,  	   { .i = +1 } },
-	{ MODKEY,              			XK_Left,   shiftview,  	   { .i = -1 } },
-	TAGKEYS(                        XK_1,                      0)
+	{ MODKEY,              			XK_Right,  shiftview,  	   {.i = +1 } },
+	{ MODKEY,              			XK_Left,   shiftview,  	   {.i = -1 } },
+    TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
 	TAGKEYS(                        XK_4,                      3)

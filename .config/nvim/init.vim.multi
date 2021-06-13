@@ -1,0 +1,22 @@
+
+
+function! s:source_config(path)
+    let l:f_path = fnameescape(expand('~/.config/nvim/conf/' . a:path))
+    if filereadable(l:f_path)
+        execute 'source' . l:f_path
+    endif
+endfunction
+
+function! s:init_config_files()
+    call s:source_config('vimplug.vim')
+    call s:source_config('pluginlist.vim')
+    call s:source_config('settings.vim')
+    call s:source_config('mappings.vim')
+    call s:source_config('customs.vim')
+"    call s:source_config('startify.vim')
+     
+endfunction
+
+call s:init_config_files()
+
+

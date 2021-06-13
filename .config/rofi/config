@@ -1,7 +1,7 @@
 rofi.theme: ~/.config/rofi/themes/viyoriya.rasi
 !! ==== rofi config  =====================
 
-rofi.font:Monospace Regular 8
+rofi.font:Hack Regular 8
 rofi.dpi:96
 rofi.lines:8
 rofi.bw:1

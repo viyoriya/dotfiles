@@ -3,9 +3,7 @@
 #xset +fp ~/.fonts/ &
 #xset fp rehash &
 #wmname LG3D &
-
-#xsetroot -cursor_name left_ptr &
-xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16 &
+xsetroot -cursor_name left_ptr &
 compton -e 0.92 -o 0.92 -b &
 feh --bg-scale ~/Pictures/wallpapers/u_muhahah_the_sixer_5.jpg &
 dunst -conf ~/.config/dunst/dunstrc &
@@ -35,7 +33,7 @@ function cpu(){
 function status {
     VOLUME="$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
     MEMORY=$(free -m | awk '/Mem/ {printf "%d/%d MB\n", $3, $2 }')
-    UPTIME="$(uptime | awk '{ print $3 }' | tr -d ',')"
+    UPTIME="$(uptime | sed 's/.*up \([^,]*\),.*/\1/')"
     DATE_TIME=$(date +"%{$NB}%{F-}%{$WH} %d/%m %{F-}%{$NB}%{F-}%{$NEON} %H:%M%{F-}")
     echo -e  " %{$NB}\uf028%{F-} %{$WH}$VOLUME%{F-} | %{$NB}\uf538%{F-} %{$WH}$MEMORY%{F-} | %{$NB}\uf2db%{F-} %{$WH}$(cpu)%{F-} | %{$NB}\uf254%{F-} %{$WH}$UPTIME%{F-} | $DATE_TIME  "
 }
@@ -44,9 +42,8 @@ ff="/tmp/$RANDOM.catwm.fifo"
 [[ -p $ff ]] || mkfifo -m 600 "$ff"
 
 while true; do
-
-    printf "%s%s\n" "%{l}%{F#FF62FF00}$(linux) %{F#FF929496}$(catFocus)" "%{r}$(status)"
-#    sleep 5s
+    printf "%s%s%s\n" "%{l}%{F#FF62FF00}$(linux) %{F#FF929496}$(catFocus)" "%{r}$(status)"
+    sleep 5s
 done < "$ff" | lemonbar -d -g x18xx -u 3 -n "catwm" -B "#FF1F222D" -f "monospace:size=9" -f "Font Awesome 5 Brands Regular:style=Regular:size=9" -f "Font Awesome 5 Free Solid:style=Solid:size=9" &
 
 catwm > "$ff"

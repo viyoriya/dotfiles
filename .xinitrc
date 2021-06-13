@@ -4,10 +4,8 @@
 # Xcursor.theme:Adwaita
 # Xcursor.size: 16
 
-#GVFS_DISABLE_FUSE=1; 
-#export GVFS_DISABLE_FUSE
-
-#setxkbmap -layout gb
+xclickroot -r xmenu-apps &
+setxkbmap gb
 
 if [ -d /etc/X11/xinit/xinitrc.d ]; then
   for f in /etc/X11/xinit/xinitrc.d/*; do
@@ -20,11 +18,11 @@ session=${1:-dwm}
 
 case $session in
         ob            ) exec ~/.config/openbox/autostart;;
-        sowm          ) exec ~/.config/sowm/autostart.sh;; 
         i3            ) exec i3;;
         tmux          ) exec tmux;;
+        st            ) exec st;;
         swm           ) exec spectrwm 2> /tmp/spectrwm.log;;
-        dwm           ) exec dwm 2> /tmp/dwm.log;;
+        dwm           ) exec dwm;;
         mwm           ) exec ~/.config/monsterwm/autostart.sh ;;
 	    catwm         ) exec ~/.config/catwm/autostart.sh ;;
 		fwm           ) exec ~/.config/fwm/autostart.sh ;;

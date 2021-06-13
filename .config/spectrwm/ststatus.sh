@@ -2,7 +2,7 @@
 
 #export _JAVA_AWT_WM_NONREPARENTING=1
 #wmname LG3D &
-feh --bg-scale ~/Pictures/Wallpapers/37572_grey_1.jpg &
+feh --bg-scale ~/Pictures/Wallpapers/u_muhahah_the_sixer_5.jpg &
 dunst -conf ~/.config/dunst/dunstrc &
 #notify-send -u low "Solus SpectrWm" "All right" -i ~/.config/spectrwm/Solus.png &
 

@@ -1,0 +1,61 @@
+Xft.lcdfilter: lcddefault
+Xft.antialias: true
+Xft.autohint: 0
+Xft.hintstyle: hintslight
+Xft.rgba: rgb
+Xft.dpi: 96
+Xft.hinting: false
+
+! *customization: -color
+! ------------ xcalc ---------------------
+
+!xcalc*font:6x13
+!xcalc*ti.button3.font:6x13
+!xcalc*ti.button3.label:SQRT 
+!xcalc*ti.button21.font:6x13 
+
+xcalc*ti.button1.vertDistance: 4
+xcalc*ti.button2.vertDistance: 4
+xcalc*ti.button3.vertDistance: 4
+xcalc*ti.button4.vertDistance: 4
+xcalc*ti.button5.vertDistance: 4
+xcalc*ti.background: gray90
+xcalc*ti.bevel.borderColor: gray65
+xcalc*ti.bevel.borderWidth: 1
+xcalc*ti.bevel.vertDistance: 4
+xcalc*ti.bevel.defaultDistance: 0
+xcalc*ti.bevel.background: rgb:b/c/b
+xcalc*ti.bevel.screen*background: rgb:b/c/b
+xcalc*ti.bevel.screen.borderColor: rgb:b/c/b
+xcalc*ti.bevel.screen.vertDistance: 10
+xcalc*ti.bevel.screen.horizDistance: 10
+xcalc*ti.bevel.screen*left: chainLeft
+xcalc*ti.bevel.screen*right: chainRight
+xcalc*ti.bevel.screen*top: chainTop
+xcalc*ti.bevel.screen*bottom: chainBottom
+xcalc*ti.bevel.screen*LCD.foreground: gray10
+xcalc*ti.bevel.screen*INV.vertDistance: 0
+xcalc*ti.Command.borderColor: gray65
+xcalc*ti.Command.background: gray85
+xcalc*ti.Command.foreground: gray30
+xcalc*ti.button5.background: rgb:e/b/b
+xcalc*ti.button35.background: rgb:e/d/c
+xcalc*ti.button40.background: rgb:e/d/c
+xcalc*ti.button45.background: rgb:e/d/c
+xcalc*ti.button50.background: rgb:e/d/c
+xcalc*ti.button55.background: rgb:b/b/e
+xcalc*ti.button37.background: gray95
+xcalc*ti.button38.background: gray95
+xcalc*ti.button39.background: gray95
+xcalc*ti.button42.background: gray95
+xcalc*ti.button43.background: gray95
+xcalc*ti.button44.background: gray95
+xcalc*ti.button47.background: gray95
+xcalc*ti.button48.background: gray95
+xcalc*ti.button49.background: gray95
+xcalc*ti.button52.background: gray95
+xcalc*ti.button53.background: gray95
+xcalc*ti.button54.background: gray95
+
+
+

@@ -1,17 +1,15 @@
-#!/usr/bin/env sh
+#! /bin/bash
 
 #xset +fp ~/.fonts/ &
 #xset fp rehash &
-#xsetroot -solid "#ffffff" &
 #for dir in /font/dir1/ /font/dir2/; do xset +fp $dir; done && xset fp rehash
 #set wmname LG3D &
-
-#xsetroot -cursor_name left_ptr &
-xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16 &
-compton -e 0.92 -o 0.92 -b &
-feh --bg-scale ~/Pictures/wallpapers/982992.jpg &
+xsetroot -cursor_name left_ptr &
+#xsetroot -solid "#ffffff" &
+#compton -e 0.92 -o 0.92 -b &
+feh --bg-scale ~/Pictures/Wallpapers/vj73avvswvg11.png &
 dunst -conf ~/.config/dunst/dunstrc &
-notify-send -u low "Solus FrankenWM" "All right" -i ~/.config/fwm/Solus.png &
+notify-send -u low "Void FrankenWM" "All right" -i ~/.config/fwm/void-transparent.png &
 
 NB=F#FF5e81ac
 WH=F#FF929496
@@ -34,7 +32,7 @@ cpu(){
 function status {
     VOLUME="$(amixer get Master | tail -1 | sed 's/.*\[\([0-9]*%\)\].*/\1/')"
     MEMORY=$(free -m | awk '/Mem/ {printf "%d/%d MB\n", $3, $2 }')
-    UPTIME=$(uptime | awk -F, '{print $1}' | awk '{$1=$2=""; print substr($0,3)}')
+    UPTIME="$(uptime | sed 's/.*up \([^,]*\),.*/\1/')"
     DATE_TIME=$(date +"%{$NB}%{F-}%{$WH} %d/%m %{F-}%{$NB}%{F-}%{$NEON} %H:%M%{F-}")
     echo -e  " %{$NB}\uf028%{F-} %{$WH}$VOLUME%{F-} | %{$NB}\uf538%{F-} %{$WH}$MEMORY%{F-} | %{$NB}\uf2db%{F-} %{$WH}$(cpu)%{F-} | %{$NB}\uf254%{F-} %{$WH}$UPTIME%{F-} | $DATE_TIME  "
 }
@@ -59,7 +57,7 @@ while read -t 30 -r wmout || true; do
         r="${r%::*}"
     fi
     printf "%s%s\n" "%{l} $r%{F#FF62FF00}$i %{F#FF929496}$(monsterFocus)" "%{r}$(status)"
-done < "$ff" | lemonbar -p -d -g x18xx -u 3 -n "frankenwm" -B "#FF1F222D" -f "monospace:size=9" -f "Font Awesome 5 Brands Regular:style=Regular:size=9" -f "Font Awesome 5 Free Solid:style=Solid:size=9" &
+done < "$ff" | lemonbar -p -d -g x18xx -u 3 -n "monsterwm" -B "#FF1F222D" -f "monospace:size=9" -f "Font Awesome 5 Brands Regular:style=Regular:size=9" -f "Font Awesome 5 Free Solid:style=Solid:size=9" &
 
 frankenwm > "$ff"
 
