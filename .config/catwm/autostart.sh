@@ -19,6 +19,8 @@ WH=F#FF929496
 #NEON=F#FF4666FF
 NEON=F#FF986671
 
+export SYS_STATUS="Catwm"
+
 function riya(){
         echo -e "    RIYA VIJAY   "
 }
@@ -81,21 +83,19 @@ function status {
     MEMORY=$(free -m | awk '/Mem/ {printf "%d/%d MB\n", $3, $2 }')
     UPTIME=$(uptime | awk -F, '{print $1}' | awk '{$1=$2=""; print substr($0,3)}')
     DATE_TIME=$(date +"%{$NB}%{F-}%{$WH} %d/%m %{F-}%{$NB}%{F-}%{$NEON} %H:%M%{F-}")
-    echo -e  "$(timer) $(usbmon)$(network)| %{$NB}\uf028%{F-} %{$WH}$VOLUME%{F-} | %{$NB}\uf538%{F-} %{$WH}$MEMORY%{F-} | %{$NB}\uf2db%{F-} %{$WH}$(cpu)%{F-} | %{$NB}\uf254%{F-} %{$WH}$UPTIME%{F-} | $DATE_TIME  "
+    echo -e  "$(timer) $(usbmon)$(network)| %{$NB}\uf028%{F-} %{$WH}$VOLUME %{F-} | %{$NB}\uf538%{F-} %{$WH}$MEMORY%{F-} | %{$NB}\uf2db%{F-} %{$WH}$(cpu) %{F-} | %{$NB}\uf254%{F-} %{$WH}$UPTIME%{F-} | $DATE_TIME  "
 }
 
-
 ff="/tmp/$RANDOM.catwm.fifo"
-[[ -p $ff ]] || mkfifo -m 600 "$ff"
+[[ -p $ff ]] || mkfifo "$ff"
 
-while read -t 10 -r wmout || true ; do        
-
-    num="$(echo $wmout | sed -n 's/D://p')"
+while read -r line ; do        
+    num="$(echo $line | sed -n 's/D://p')"
     [ ! -z "$num" ] && desktopNum=$num
-
+    
     printf "%s%s\n" "%{l}  $desktopNum%{F#FF62FF00}$(riya) %{F#FF929496}$(catFocus)" "%{r}$(status)"
-    sleep 3s
-done < "$ff" | lemonbar -p -d -g x19xx -u 3 -n "catwm" -B "#FF1F222D" -f "Iosevka:style=Bold:size=9" -f "Font Awesome 5 Brands Regular:style=Regular:size=9" -f "Font Awesome 5 Free Solid:style=Solid:size=9" &
+    sleep 0.5
+done < "$ff" | lemonbar -p -d -g x19xx -u 2 -o -1  -n "catwm" -B "#FF1F222D" -f "Iosevka:style=Bold:size=8" -f "Font Awesome 5 Brands Regular:style=Regular:size=8" -f "Font Awesome 5 Free Solid:style=Solid:size=8" &
 
 catwm > "$ff"
 

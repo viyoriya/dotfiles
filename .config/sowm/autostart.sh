@@ -7,9 +7,9 @@
 #xsetroot -cursor_name left_ptr &
 xsetroot -xcf /usr/share/icons/Adwaita/cursors/left_ptr 16 &
 compton -e 0.92 -o 0.92 -b &
-feh --bg-scale ~/Pictures/Wallpapers/37572_grey_1.jpg &
+feh --bg-scale ~/Pictures/Wallpapers/wallpaper.png &
 dunst -conf ~/.config/dunst/dunstrc &
-notify-send -u low "Solus sowm" "All right" -i ~/.config/sowm/Solus.png &
+notify-send -u low "Arch sowm" "All right" -i ~/.config/sowm/Solus.png &
 
 
 NB=F#FF5e81ac

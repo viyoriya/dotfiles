@@ -17,12 +17,13 @@ fi
 session=${1:-dwm}
 
 case $session in
-        ob            ) exec ~/.config/openbox/autostart;;
+        dwm           ) exec dwm;;
         i3            ) exec i3;;
         tmux          ) exec tmux;;
         st            ) exec st;;
+        ob            ) exec ~/.config/openbox/autostart;;
         swm           ) exec spectrwm 2> /tmp/spectrwm.log;;
-        dwm           ) exec dwm;;
+        sowm          ) exec ~/.config/sowm/autostart.sh;;
         mwm           ) exec ~/.config/monsterwm/autostart.sh ;;
 	    catwm         ) exec ~/.config/catwm/autostart.sh ;;
 		fwm           ) exec ~/.config/fwm/autostart.sh ;;

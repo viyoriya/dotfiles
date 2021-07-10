@@ -1,0 +1,27 @@
+#!/bin/bash
+
+ufwstatus=$(sudo ufw status | awk '{ print $2 }')
+
+if [ "$ufwstatus" = "active" ]; then
+       echo -e " "
+elif [ "$ufwstatus" = "inactive" ]; then
+      echo -e " "
+fi      
+
+
+# edit sudoers to allow sudo access
+# 1.open sudoers  
+#
+# sudo visudo
+#
+# 2.add below line
+#
+# Cmnd_Alias UFWSTATUS = /usr/sbin/ufw status
+#
+# 3.add below line at end of the file, before @includedir /etc/sudoers.d line 
+#
+# username ALL= NOPASSWD: UFWSTATUS
+#
+# username is your login name/user name (ALL = all the host)
+
+# refer https://wiki.archlinux.org/title/sudo => Example entries => Note 

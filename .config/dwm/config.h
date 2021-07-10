@@ -6,11 +6,11 @@ static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:style=Bold:size=9","Font Awesome 5 Brands Regular:style=Regular:size=9","Font Awesome 5 Free Solid:style=Solid:size=9", "Noto Color Emoji:style=Regular:pixelsize=12" }; 
-static const char dmenufont[]       =   "Iosevka:style=Bold:size=9";
+static const char *fonts[]          = { "Iosevka:style=Bold:size=9","Font Awesome 5 Brands Regular:style=Regular:size=9","Font Awesome 5 Free Solid:style=Solid:size=9","Noto Sans Tamil:style=Regular:size=9" }; 
+static const char dmenufont[]       = "Iosevka:style=Bold:size=9";
 
 static const char col_gray1[]       = "#1F222D"; // "#2E3440"; 
-static const char col_gray2[]       = "#929496"; 
+static const char col_gray2[]       = "#828486"; 
 static const char col_red[]         = "#956671";
 static const char col_border[]      = "#000000"; // "#5E81AC";*/
 
@@ -24,7 +24,8 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "  I", " II", "III", "IV", "V", "VI", "VII", "VIII", "IX" };
+static const char *tags[] = { "  I", " II", "III", "IV", "V", "VI", "VII", "VIII", "IX " };
+//static const char *tags[] = { "  அ ", " ஆ  ", " இ ", " ஈ", " உ ", " ஊ  ", " எ ", " ஏ ", " ஐ " };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -70,7 +71,7 @@ static const char *nvimcmd[]    	= { "st","-e","nvim", NULL };
 static const char *rangercmd[]      = { "st","-e","ranger", NULL };
 static const char *vscodecmd[]    	= { "codium", NULL };
 static const char *firefoxcmd[]  	= { "firefox",NULL};
-static const char *rofiwincmd[]  	= { "rofi","-show","window", NULL }; 
+/* static const char *rofiwincmd[]  	= { "rofi","-show","window", NULL }; */
 /* static const char *xmenucmd[]       = { "st","-e","xmenu","<", "~/.cache/xdg-menu/menu",NULL}; */
 static const char *volumeUp[]    	= {	"amixer","sset","Master","5%+",NULL};
 static const char *volumeDown[]  	= {	"amixer","sset","Master","5%-",NULL};
@@ -83,15 +84,15 @@ static Key keys[] = {
 	{ MODKEY,                       XK_F3,     spawn,          {.v = rangercmd  } },
 	{ MODKEY,                       XK_F4,     spawn,          {.v = vscodecmd  } },
 	{ MODKEY,                       XK_F5,     spawn,          {.v = firefoxcmd } },
-	{ MODKEY,                       XK_r,      spawn,          SHCMD("~/.config/dwm/xmenu-apps") },
-	{ MODKEY,                       XK_w,      spawn,          {.v = rofiwincmd } },
-	{ MODKEY,                       XK_Tab,    view,           {0} },
+	{ MODKEY,                       XK_r,      spawn,          SHCMD("~/.config/dwm/util/xmenu-apps") },
+	{ MODKEY,                       XK_v,      view,           {0} },
 	{ MODKEY,                       XK_z, 	   zoom,           {0} },
 	{ MODKEY,			            XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
+    { MODKEY,                       XK_Tab,    focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
@@ -110,6 +111,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
 	{ MODKEY,              			XK_Right,  shiftview,  	   {.i = +1 } },
 	{ MODKEY,              			XK_Left,   shiftview,  	   {.i = -1 } },
+    { MODKEY,       				XK_0,      spawn,          SHCMD("~/.config/dwm/util/dwm_power_menu.sh") },
+    { MODKEY,       				XK_Print,  spawn,          SHCMD("~/.config/dwm/util/screenshot.sh") },
+    { MODKEY|ShiftMask,       		XK_Print,  spawn,          SHCMD("~/.config/dwm/util/screenshot_w.sh") },
+    { MODKEY,             			XK_F1,     spawn,          {.v = volumeUp } },
+    { MODKEY|ShiftMask,   			XK_F1,     spawn,          {.v = volumeDown } },
     TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -119,11 +125,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY,       				XK_0,      spawn,          SHCMD("~/.config/dwm/power-menu.sh") },
-	{ MODKEY,       				XK_Print,  spawn,          SHCMD("~/.config/dwm/screenshot.sh") },
-	{ MODKEY|ShiftMask,       		XK_Print,  spawn,          SHCMD("~/.config/dwm/screenshot-w.sh") },
-    { MODKEY,             			XK_F1,     spawn,          {.v = volumeUp } },
-    { MODKEY|ShiftMask,   			XK_F1,     spawn,          {.v = volumeDown } },
 };
 
 /* button definitions */

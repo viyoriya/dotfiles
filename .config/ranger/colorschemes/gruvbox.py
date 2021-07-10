@@ -9,7 +9,7 @@ class Default(ColorScheme):
 			return default_colors
 
 		elif context.in_browser:
-			fg = 223
+			fg = 245
 
 			if context.selected:
 				attr = reverse
@@ -19,11 +19,10 @@ class Default(ColorScheme):
 
 			if context.empty or context.error:
 				attr |= normal
-				bg = 124
-				fg = 223
+				fg = 245
 
 			if context.border:
-				attr |= bold
+				attr |= normal
 				fg = 166
 				
 			if context.media:
@@ -40,12 +39,12 @@ class Default(ColorScheme):
 				fg = 72
 				
 			if context.directory:
-				attr |= normal
-				fg = 142
+				attr |= bold
+				fg = 66
 				
 			elif context.executable and not any((context.media, context.container, context.fifo, context.socket)):
 				attr |= normal
-				fg = 66
+				fg = 142
 				
 			if context.socket:
 				fg = 132
@@ -63,7 +62,7 @@ class Default(ColorScheme):
 				attr |= bold
 				
 				if fg in (124, 132):
-					fg = 223
+					fg = 245
 					
 				else:
 					fg = 124
@@ -90,12 +89,13 @@ class Default(ColorScheme):
 					
 		elif context.in_titlebar:
 			attr |= bold
-			fg = 223
+			fg = 245
 			
 			if context.hostname:
-				fg = 172
+				fg = 24
 				
 			elif context.directory:
+				attr |= bold
 				fg = 66
 				
 			elif context.tab:
@@ -107,7 +107,7 @@ class Default(ColorScheme):
 
 		elif context.in_statusbar:
 			attr |= bold
-			fg = 223
+			fg = 245
 			
 			if context.permissions:
 				if context.good:

@@ -36,7 +36,7 @@
 [push]
     default = simple
 [credential]
-    helper = store
+	helper = store
 [hub]
     protocol = https
     

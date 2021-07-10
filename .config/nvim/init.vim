@@ -37,7 +37,8 @@ endif
 
 "" Color
 Plug 'lilydjwg/colorizer'
-Plug 'joshdick/onedark.vim'
+"Plug 'joshdick/onedark.vim'
+Plug 'b4skyx/serenade'
 "Plug 'christianchiarulli/nvcode-color-schemes.vim'
 "Plug 'tomasr/molokai'
 "Plug 'junegunn/fzf'
@@ -123,13 +124,15 @@ syntax on
 set ruler
 set number relativenumber
 set background=dark
+set showtabline=2
 "split
 "set splitbelow                          
 "set splitright                        
 
 
 "colorscheme molokai
-colorscheme onedark
+"colorscheme onedark
+colorscheme serenade
 "let g:nvcode_termcolors=256
 "colorscheme nvcode
 
@@ -226,7 +229,6 @@ set statusline+=%0*\ %{winnr()}/%{Totalbuffers()}\
 "Tabline
 
 let g:tablineclosebutton=1
-
 function! Tabline()
   let s = ''
   for i in range(tabpagenr('$'))
@@ -235,7 +237,7 @@ function! Tabline()
     let buflist = tabpagebuflist(tab)
     let bufnr = buflist[winnr - 1]
     let bufname = bufname(bufnr)
-    let bufmodified = getbufvar(bufnr, "&mod")
+    let bufmodified = getbufvar(bufnr,"&mod")
 
     let s .= '%' . tab . 'T'
     let s .= (tab == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#')
@@ -334,7 +336,6 @@ autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(expand('
 "" Mappings
 "*****************************************************************************
 
-
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
@@ -343,14 +344,23 @@ nnoremap N Nzzzv
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Close window & close all except active window
-noremap <Leader>wc :close<CR>
-noremap <Leader>wo :only<CR>
-
 "" Tabs
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 nnoremap <silent> <S-t> :tabnew<CR>
+":nnoremap <C-Tab> :n<cr>
+":nnoremap <S-Tab> :N<cr>
+
+"" Buffer nav
+noremap <leader>z :bp<CR>
+noremap <leader>q :bp<CR>
+noremap <leader>x :bn<CR>
+noremap <leader>w :bn<CR>
+"" Close buffer
+noremap <leader>c :bd<CR>
+"" Close window & close all except active window
+noremap <Leader>wc :close<CR>
+noremap <Leader>wo :only<CR>
 
 "Source nvim init.vim
 nnoremap <leader>r :source $MYVIMRC<cr>
@@ -382,15 +392,6 @@ endif
 noremap YY "+y<CR>
 noremap XX "+x<CR>
 
-"" Buffer nav
-noremap <leader>z :bp<CR>
-noremap <leader>q :bp<CR>
-noremap <leader>x :bn<CR>
-noremap <leader>w :bn<CR>
-
-"" Close buffer
-noremap <leader>c :bd<CR>
-
 "" Clean search (highlight)
 nnoremap <silent> <leader><space> :noh<cr>
 
@@ -408,7 +409,6 @@ vmap > >gv
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
-
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
@@ -421,5 +421,3 @@ hi TabLineFill  ctermfg=255  ctermbg=238  cterm=NONE
 " Open buffers in Tab and netwr will open in left
 
 au BufAdd,BufNewFile *.* nested tab sball
-
-
