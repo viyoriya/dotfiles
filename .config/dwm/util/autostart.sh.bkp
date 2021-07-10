@@ -8,7 +8,7 @@ xrdb -merge ~/.Xresources
 picom -e 0.92 -o 0.92 -b &
 feh --bg-scale ~/Pictures/Wallpapers/archlinux-1.png &
 dunst -conf ~/.config/dunst/dunstrc &
-notify-send -u low "Arch dwm" "All right" -i ~/.config/dwm/dwm_logo.png
+notify-send -u low "Arch dwm" "All right" -i ~/.config/dwm/util/dwm_logo.png
 
 usbmon() {
 	usb1=$(lsblk -la | awk '/sdc1/ { print $1 }')
@@ -33,8 +33,8 @@ timer(){
         if [ "$timeDiff" -ge "0" ]; then
             echo -e " $timeDiff Min | "
         else
-            notify-send -u low "Timer" "done !!!" -i ~/.config/dwm/dwm_logo.png
-            paplay ~/.config/dwm/mixkit-happy-bell-alert-601.wav
+            notify-send -u low "Timer" "done !!!" -i ~/.config/dwm/util/dwm_logo.png
+            paplay ~/.config/dwm/util/mixkit-happy-bell-alert-601.wav
             rm $timerFile
         fi
     fi

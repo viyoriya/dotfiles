@@ -10,7 +10,7 @@ xrdb -merge ~/.Xresources
 picom -e 0.92 -o 0.92 -b &
 feh --bg-scale ~/Pictures/Wallpapers/wallpaper.png &
 dunst -conf ~/.config/dunst/dunstrc &
-notify-send -u low "$os dwm" "All right" -i ~/.config/dwm/dwm_logo.png
+notify-send -u low "$os dwm" "All right" -i ~/.config/dwm/util/dwm_logo.png
 
 dwmblocks &
 
