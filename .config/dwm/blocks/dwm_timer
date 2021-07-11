@@ -10,8 +10,8 @@ if [ -f $timerFile ]; then
       if [ "$timeDiff" -ge "0" ]; then
             printf " $timeDiff Min"
       else
-          notify-send -u low "Timer" "done !!!" -i ~/.config/dwm/dwm_logo.png
-          paplay ~/.config/dwm/mixkit-happy-bell-alert-601.wav
+          notify-send -u low "Timer" "done !!!" -i ~/.config/dwm/util/dwm_logo.png
+          paplay ~/.config/dwm/util/mixkit-happy-bell-alert-601.wav
           rm $timerFile
       fi
 fi

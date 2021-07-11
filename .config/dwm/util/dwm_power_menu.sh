@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DMENU_OPT=" -i -nb #2E3440 -nf #929496 -sb #929496 -sf #2E3440 -fn Iosevka:style=Bold:pixelsize=12"    
+DMENU_OPT=" -i -nb #2E3440 -nf #929496 -sb #929496 -sf #2E3440 -fn Iosevka:style=Regular:size=11"    
 DMENU="dmenu -p   $DMENU_OPT"
 
 SESSON_ID=$(loginctl session-status | awk 'NR==1{print $1}')
