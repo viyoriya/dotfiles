@@ -1,0 +1,7 @@
+#!/bin/sh
+
+MENU_FILE=~/.cache/xdg-xmenu/menu
+
+if [ -f "$MENU_FILE" ]; then
+    xmenu "$@" < "$MENU_FILE" | sh &
+fi

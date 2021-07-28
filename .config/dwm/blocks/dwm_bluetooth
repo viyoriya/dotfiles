@@ -1,0 +1,44 @@
+#!/bin/bash
+
+power_on() {
+    if bluetoothctl show | grep -q "Powered: yes"; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+device_connected() {
+    device_info=$(bluetoothctl info "$1")
+    if echo "$device_info" | grep -q "Connected: yes"; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+
+if power_on; then
+    
+    DEVICES=""
+    mapfile -t paired_devices < <(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
+    counter=0
+
+    for device in "${paired_devices[@]}"; do
+        if device_connected $device; then
+            device_alias=$(bluetoothctl info $device | grep "Alias" | cut -d ' ' -f 2-)
+
+            if [ $counter -gt 0 ]; then
+                DEVICES+=", ${device_alias}"
+            else
+                DEVICES+=" ${device_alias}"
+            fi
+
+            ((counter++))
+        fi
+    done
+   
+    [[ ! -z "$DEVICES" ]] &&  printf '^c#5E81AC^^d^'"$DEVICES" ||   echo -e "" 
+
+fi
+

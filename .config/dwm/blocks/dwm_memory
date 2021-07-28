@@ -2,3 +2,4 @@
 
 MEMORY=$(free -m | awk '/Mem/ {printf "%d/%d MB\n", $3, $2 }')
 echo -e " $MEMORY"
+#echo -e "^c#4c566a^ ^d^$MEMORY"

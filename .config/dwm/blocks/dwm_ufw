@@ -3,9 +3,9 @@
 ufwstatus=$(sudo ufw status | awk '{ print $2 }')
 
 if [ "$ufwstatus" = "active" ]; then
-       echo -e " "
+       echo -e "^c#549665^ "
 elif [ "$ufwstatus" = "inactive" ]; then
-      echo -e " "
+      echo -e "^c#d75f5f^ "
 fi      
 
 
@@ -24,4 +24,7 @@ fi
 #
 # username is your login name/user name (ALL = all the host)
 
-# refer https://wiki.archlinux.org/title/sudo => Example entries => Note 
+# refer https://wiki.archlinux.org/title/sudo => Example entries => Note
+
+# #a3e868  
+# || xsetroot -name "^c#d3869b^[ $(mpd) ]  ^c#fabd2f^[ $(ram) ]  ^c#fb4934^[ $(vol) ]  ^c#83a598^[ $(wifi) ]  ^c#8ec07c^[ $(timedate) ] "

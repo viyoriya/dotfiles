@@ -6,6 +6,8 @@ static const unsigned int gappx     = 2;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
+static const int lockfullscreen     = 1;        /* 1 will force focus on the fullscreen window */
+
 static const char *fonts[]          = { "Iosevka:style=Bold:size=11","Font Awesome 5 Brands Regular:style=Regular:size=11","Font Awesome 5 Free Solid:style=Solid:size=11","Noto Sans Tamil:style=Regular:size=11" }; 
 static const char dmenufont[]       = "Iosevka:style=Bold:size=11";
 

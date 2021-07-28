@@ -3,6 +3,7 @@ static const Block blocks[] = {
 	/*Icon*/	/*Command*/		              /*Interval*/	    /*Signal*/
 	{ "","~/.config/dwm/blocks/dwm_timer",    		5,		        0	},
 	{ "","~/.config/dwm/blocks/dwm_usb",    		5,	        	0	},
+	{ "","~/.config/dwm/blocks/dwm_bluetooth",		5,	        	0	},
 	{ "","~/.config/dwm/blocks/dwm_network",		5,	        	0	},
 	{ "","~/.config/dwm/blocks/dwm_volume",		    5,		        0	},
 	{ "","~/.config/dwm/blocks/dwm_memory",		    5,		        0	},

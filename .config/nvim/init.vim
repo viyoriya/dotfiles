@@ -117,6 +117,10 @@ let g:maplocalleader = ','
 
 let no_buffers_menu=1
 
+let g:netrw_winsize = 20
+let g:netrw_banner = 0
+let g:netrw_browse_split=3
+
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
@@ -339,6 +343,15 @@ autocmd FileType java nnoremap <buffer> <F9> :exec '!javac' shellescape(expand('
 " search will center on the line it's found in.
 nnoremap n nzzzv
 nnoremap N Nzzzv
+
+nnoremap <C-a> ggVGy<CR>
+nnoremap <C-e> :Vexplore<CR>
+
+nnoremap <F2> :Vexplore<CR>
+nnoremap <F3> :bd<CR>
+nnoremap <F4> :bd!<CR>
+nnoremap <F5> :bp<CR>
+nnoremap <F6> :bn<CR>
 
 "" Split window
 noremap <Leader>h :<C-u>split<CR>

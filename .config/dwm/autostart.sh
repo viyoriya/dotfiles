@@ -12,5 +12,6 @@ feh --bg-scale ~/Pictures/Wallpapers/wallpaper.png &
 dunst -conf ~/.config/dunst/dunstrc &
 notify-send -u low "$os dwm" "All right" -i ~/.config/dwm/util/dwm_logo.png
 
+numlockx &
 dwmblocks &
 
