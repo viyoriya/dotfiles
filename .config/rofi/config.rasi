@@ -11,7 +11,9 @@ configuration {
 	drun-display-format: "{name}";
 	sidebar-mode: false;
 	dpi: 96;
-	theme: "~/.config/rofi/themes/viyoriya.rasi";
 	display-window: "";
 	display-drun: "";
 }
+
+@theme "~/.config/rofi/themes/viyoriya.rasi"
+

@@ -1,5 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Tracker
-Description=Tracker
-Exec=tracker daemon -k

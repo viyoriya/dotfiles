@@ -1,5 +1,5 @@
 [global]
-font = Iosevka 10
+font = Iosevka 11
 
 # Allow a small subset of html markup:
 #   <b>bold</b>
@@ -81,7 +81,7 @@ shrink = no
 # The transparency of the window.  Range: [0; 100].
 # This option will only work if a compositing windowmanager is
 # present (e.g. xcompmgr, compiz, etc.).
-transparency = 65
+transparency = 50
 
 # Don't remove messages, if the user is idle (no mouse or keyboard input)
 # for longer than idle_threshold seconds.
@@ -158,8 +158,8 @@ max_icon_size = 30
 icon_path = /usr/share/icons/Papirus-Dark/16x16/mimetypes/:/usr/share/icons/Papirus-Dark/48x48/status/:/usr/share/icons/Papirus-Dark/16x16/devices/:/usr/share/icons/Papirus-Dark/48x48/notifications/:/usr/share/icons/Papirus-Dark/48x48/emblems/:/.local/share/icons
 
 frame_width = 1
-frame_color = "#1F222D"
-#1F222D
+frame_color = "#2E3440"
+# 1F222D
 
 [shortcuts]
 close = ctrl+space
@@ -168,24 +168,24 @@ history = ctrl+grave
 context = ctrl+shift+period
 
 [urgency_low]
-frame_color = "#1F222D"
+frame_color = "#2E3440"
 foreground = "#D8DEE9"
-background = "#1F222D"
+background = "#2E3440"
 timeout = 4
 
 [urgency_normal]
-frame_color = "#1F222D"
+frame_color = "#2E3440"
 foreground = "#30A2DA"
-background = "#1F222D"
+background = "#2E3440"
 timeout = 6
-#A3BE8C
+# A3BE8C
 
 [urgency_critical]
-frame_color = "#1F222D"
+frame_color = "#2E3440"
 foreground = "#BF616A"
-background = "#1F222D"
+background = "#2E3440"
 timeout = 8
-#D08770
+# D08770
 
 #[Nautilus_icon]
 #image-path=media-removable-symbolic

@@ -1,12 +1,8 @@
 #!/bin/bash
 
-usb=$(lsblk -la | awk '/sdc1/ { print $1 }')
-#usbmounted=$(lsblk -la | awk '/sdc1/ { print $7 }')
  
-if [ "$usb" ]; then
-#  if [ -z "$usbmounted" ]; then
-#     printf "  "
-#  else
-      printf "  $usb"
-#  fi
-fi
+for usb in $(\lsblk -do name,tran | awk '$2=="usb" {print $1}')    
+do
+    printf "^c#00BBFF^ ^d^$usb"
+done
+

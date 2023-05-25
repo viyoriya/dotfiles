@@ -3,12 +3,15 @@
 #export _JAVA_AWT_WM_NONREPARENTING=1
 
 #wmname LG3D &
+
+os=$(grep '^ID=' /etc/os-release | cut -d"=" -f2-)
+
 xrdb -merge ~/.Xresources
 
 picom -e 0.92 -o 0.92 -b &
 feh --bg-scale ~/Pictures/Wallpapers/archlinux-1.png &
 dunst -conf ~/.config/dunst/dunstrc &
-notify-send -u low "Arch dwm" "All right" -i ~/.config/dwm/util/dwm_logo.png
+notify-send -u low "$os dwm" "All right" -i ~/.config/dwm/util/dwm_logo.png
 
 usbmon() {
 	usb1=$(lsblk -la | awk '/sdc1/ { print $1 }')
@@ -67,7 +70,8 @@ while true; do
 	MEMORY=$(free -m | awk '/Mem/ {printf "%d/%d MB\n", $3, $2 }')
 	UPTIME=$(uptime | awk -F, '{print $1}' | awk '{$1=$2=""; print substr($0,3)}')
 	DATE_TIME=$(date +" %d/%m  %H:%M")
-    xsetroot -name " $(timer)$(usbmon) $(network) |   $VOLUME  |   $MEMORY  |   $(cpu)  |   $UPTIME  |  $DATE_TIME "
+#    xsetroot -name " $(timer)$(usbmon) $(network) |   $VOLUME  |   $MEMORY  |   $(cpu)  |   $UPTIME  |  $DATE_TIME "
+    xsetroot -name " ^c#fabd2f^$(network) | ^c#fb4934^  $VOLUME | ^c#83a598^  $MEMORY | ^c#8ec07c^$(cpu) |  ^c#8ec07c^ $UPTIME  |  ^c#8ec07c^$DATE_TIME "
 	sleep 5s
 done &
 

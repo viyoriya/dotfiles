@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ufwstatus=$(sudo ufw status | awk '{ print $2 }')
+ufwstatus=$(sudo ufw status | awk 'NR==1{ print $2 }')
 
 if [ "$ufwstatus" = "active" ]; then
        echo -e "^c#549665^ "

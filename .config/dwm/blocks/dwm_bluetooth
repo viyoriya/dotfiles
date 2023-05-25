@@ -21,24 +21,24 @@ device_connected() {
 if power_on; then
     
     DEVICES=""
-    mapfile -t paired_devices < <(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
     counter=0
-
-    for device in "${paired_devices[@]}"; do
+    # For Bash
+    # mapfile -t paired_devices < <(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2) 
+    # for device in "${paired_devices[@]}"; do
+    paired_devices=$(bluetoothctl devices | grep Device | cut -d ' ' -f2)
+    for device in $paired_devices
+    do
         if device_connected $device; then
             device_alias=$(bluetoothctl info $device | grep "Alias" | cut -d ' ' -f 2-)
-
+            #echo $device_alias
             if [ $counter -gt 0 ]; then
                 DEVICES+=", ${device_alias}"
             else
                 DEVICES+=" ${device_alias}"
             fi
-
             ((counter++))
         fi
     done
-   
-    [[ ! -z "$DEVICES" ]] &&  printf '^c#5E81AC^^d^'"$DEVICES" ||   echo -e "" 
-
+    [[ ! -z "$DEVICES" ]] &&  printf '^c#22BBFF^^d^'"$DEVICES"
 fi
 

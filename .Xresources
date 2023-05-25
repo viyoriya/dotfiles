@@ -1,15 +1,13 @@
 Xft.lcdfilter: lcddefault
-Xft.antialias: true
-Xft.autohint: 0
-Xft.hintstyle: hintslight
+Xft.hintstyle: hintfull
+Xft.antialias: 1
 Xft.rgba: rgb
 Xft.dpi: 96
-Xft.hinting: false
 
 ! *customization: -color
 ! ------------ xcalc ---------------------
 
-!xcalc*font:6x13
+xcalc*font:-xos4-terminus-medium-*-*-*-*-120-*-*-*-*-*-*
 !xcalc*ti.button3.font:6x13
 !xcalc*ti.button3.label:SQRT 
 !xcalc*ti.button21.font:6x13 

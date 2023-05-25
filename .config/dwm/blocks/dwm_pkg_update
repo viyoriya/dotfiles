@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# install yay and pacman-contrib
+
+isUpdateAvailable()
+{
+    if ! archPkgs=$(checkupdates 2> /dev/null | wc -l ); then archPkgs=0; fi
+    if ! yayPkgs=$(yay -Qum --devel 2> /dev/null | wc -l); then yayPkgs=0; fi
+    totalUpdates=$(("$archPkgs" + "$yayPkgs"));
+    if (( $totalUpdates > 0 ));then echo "^c#55FF00^  ^d^^c#FF0000^$totalUpdates^d^"; fi
+    
+}
+
+isUpdateAvailable $@
+
+
+
